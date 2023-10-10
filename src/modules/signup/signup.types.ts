@@ -1,10 +1,12 @@
 import type { InputHTMLAttributes } from "react";
 
+import type { ValidationRule } from "../validation";
+
 export interface StepConfig {
   id: SignUpStep;
   type: InputHTMLAttributes<HTMLInputElement>["type"];
   label: string;
-  rules?: any[];
+  rules?: ValidationRule[];
 }
 
 export enum SignUpStep {

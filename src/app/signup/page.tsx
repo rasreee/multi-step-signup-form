@@ -5,6 +5,7 @@ import { useState } from "react";
 
 import { useStepper } from "@/hooks/use-stepper";
 import { SIGNUP_STEPS } from "@/modules/signup/signup.types";
+import { isNotEmptyString, validateWithRule } from "@/modules/validation";
 
 const SignUpPage = () => {
   const { step, back, next, isFirst, isLast } = useStepper(SIGNUP_STEPS);
@@ -19,8 +20,12 @@ const SignUpPage = () => {
     next();
   };
 
-  const isNextDisabled = (): boolean => {
-    return !values[step.id];
+  const isValidInput = (): boolean => {
+    const value = values[step.id];
+    const rules = step.rules || [isNotEmptyString];
+    return rules
+      .map((rule) => validateWithRule(value, rule))
+      .reduce((prev, curr) => prev && curr);
   };
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -55,7 +60,7 @@ const SignUpPage = () => {
       <div className="flex justify-end">
         <button
           className="text-center font-semibold border px-6 py-2 rounded disabled:opacity-60"
-          disabled={isNextDisabled()}
+          disabled={!isValidInput()}
           onClick={isLast() ? handleSubmit : handleNextClick}
         >
           {isLast() ? "Submit" : "Next"}
