@@ -1,4 +1,4 @@
-import type { LayoutProps } from "@/modules/nextjs/layout";
+import type { LayoutProps } from "@/modules/nextjs";
 
 const SignUpLayout = ({ children }: LayoutProps) => {
   return (

@@ -1,6 +1,6 @@
 import type { InputHTMLAttributes } from "react";
 
-import type { ValidationRule } from "../validation";
+import type { ValidationRule } from "@/modules/validation";
 
 export interface StepConfig {
   id: SignUpStep;

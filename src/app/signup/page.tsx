@@ -5,7 +5,7 @@ import type { ChangeEventHandler } from "react";
 import { useEffect, useState } from "react";
 
 import { useStepper } from "@/hooks/use-stepper";
-import { SIGNUP_STEPS } from "@/modules/signup/signup.types";
+import { SIGNUP_STEPS } from "@/modules/signup";
 import { isNotEmptyString, validateWithRule } from "@/modules/validation";
 
 enum Status {
