@@ -27,7 +27,7 @@ export const SIGNUP_STEPS: StepConfig[] = [
   },
   {
     id: SignUpStep.DATE_OF_BIRTH,
-    type: "datetime-local",
+    type: "date",
     label: "Date of Birth",
   },
   {
