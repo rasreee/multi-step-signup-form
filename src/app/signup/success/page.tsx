@@ -12,7 +12,7 @@ const SignUpSuccessPage = () => {
     }, 2000);
   }, []);
 
-  return <div className="flex flex-col gap-8">Successfully signed up!</div>;
+  return <div className="flex flex-col gap-8">Success! Redirecting...</div>;
 };
 
 export default SignUpSuccessPage;
