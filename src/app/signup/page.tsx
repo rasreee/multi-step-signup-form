@@ -13,15 +13,9 @@ const SignUpPage = () => {
     Object.fromEntries(SIGNUP_STEPS.map(({ id }) => [id, ""]))
   );
 
-  const handleBackClick = () => {
-    back();
-  };
-  const handleNextClick = () => {
-    next();
-  };
+  const value = values[step.id];
 
   const isValidInput = (): boolean => {
-    const value = values[step.id];
     const rules = step.rules || [isNotEmptyString];
     return rules
       .map((rule) => validateWithRule(value, rule))
@@ -40,7 +34,7 @@ const SignUpPage = () => {
         {!isFirst() && (
           <button
             className="text-center font-semibold -ml-4 py-3 px-4"
-            onClick={handleBackClick}
+            onClick={back}
           >
             {"<"} Back
           </button>
@@ -61,7 +55,7 @@ const SignUpPage = () => {
         <button
           className="text-center font-semibold border px-6 py-2 rounded disabled:opacity-60"
           disabled={!isValidInput()}
-          onClick={isLast() ? handleSubmit : handleNextClick}
+          onClick={isLast() ? handleSubmit : next}
         >
           {isLast() ? "Submit" : "Next"}
         </button>
